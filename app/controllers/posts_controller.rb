@@ -9,15 +9,12 @@ before_action :authenticate_user!,
   end
 
   def show
-    render html:'show'
+    @current_post = Post.find(params[:id])
+    render :show
   end
 
   def new
     @new_post = current_user.posts.build
-  end
-
-  def edit
-    render html:'edit'
   end
 
   def create
@@ -30,16 +27,27 @@ before_action :authenticate_user!,
     redirect_to posts_path
   end
 
-  def update
-    render html:'update'
-  end
-
   def destroy
     deleted_post = Post.find(params[:id])
     deleted_post.destroy
 
     redirect_to posts_path
 
+  end
+
+  def edit
+    @edited_post = Post.find(params[:id])
+
+    # render :edit
+  end
+
+  def update
+    @updated_post = Post.find(params[:id])
+
+    @updated_post.title = params[:post][:title]
+    @updated_post.content = params[:post][:content]
+
+    redirect_to post_path if @updated_post.save
   end
 
 end

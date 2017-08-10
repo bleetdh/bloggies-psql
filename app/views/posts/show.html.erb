@@ -1,0 +1,16 @@
+<h1><%= @current_post.title %></h1>
+<small>
+  created at:
+  <%= @current_post.created_at %>
+</br>
+updated at:
+<%= @current_post.updated_at %>
+</small>
+<p>
+  <%= @current_post.content %>
+</p>
+
+<%= link_to "Home", root_path %>
+<%= link_to "View all posts", posts_path %>
+<%= link_to "Edit", edit_post_path %>
+<%= link_to "Delete post", post_path, method: :delete %>

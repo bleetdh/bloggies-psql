@@ -19,10 +19,10 @@ before_action :authenticate_user!,
 
   def create
     # allowing mass assignment
-    creating_post = params.require(:post).permit(:title, :content, :user_id)
+    # creating_post = post_params
     # render json: @creating_post
 
-    Post.create(creating_post)
+    Post.create(post_params)
 
     redirect_to posts_path
   end
@@ -37,17 +37,30 @@ before_action :authenticate_user!,
 
   def edit
     @edited_post = Post.find(params[:id])
-
     # render :edit
   end
 
   def update
+
+    # updated_post = Post.find(params[:id])
+    #
+    # updated_post.update(params[:post])
     @updated_post = Post.find(params[:id])
 
-    @updated_post.title = params[:post][:title]
-    @updated_post.content = params[:post][:content]
+    @updated_post.update(post_params)
 
-    redirect_to post_path if @updated_post.save
+    # @updated_post.title = params[:post][:title]
+    # @updated_post.content = params[:post][:content]
+
+    redirect_to post_path
+    # if @updated_post.save
+  end
+
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :content, :user_id)
   end
 
 end

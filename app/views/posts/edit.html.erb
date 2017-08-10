@@ -1,6 +1,6 @@
 <h2>Updating Post: <%= @edited_post.title %></h2>
 
-<%= form_for @edited_post, url: post_path, method: :put do |f| %>
+<%= form_for @edited_post, url: post_path, method: :patch do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
   </br>
@@ -8,5 +8,6 @@
   <%= f.label :content %>
   <%= f.text_area :content, size: "80x8" %>
   </br>
+  <%= f.hidden_field :user_id %>
   <%= f.submit %>
 <% end %>

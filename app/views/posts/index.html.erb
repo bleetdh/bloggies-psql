@@ -1,2 +1,16 @@
-<h1>Posts#index</h1>
+<h1>All posts by <%= current_user.name %></h1>
 <p>Find me in app/views/posts/index.html.erb</p>
+
+<ul>
+  <% @all_posts.each_with_index do |post| %>
+
+    <li>
+      <h2><%= post.title %></h2>
+      <%= post.content %></br>
+      <small>created by <%= current_user.name %></small>
+    </li>
+
+    <%= link_to "view", post_path(post) %>
+    <%= link_to "delete", post_path(post), method: :delete %>
+  <% end  %>
+</ul>

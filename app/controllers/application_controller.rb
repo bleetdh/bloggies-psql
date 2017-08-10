@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # allows us to add more property to users instead of just email and pw
   before_action :configure_permitted_parameters, if: :devise_controller?
   # will request for log in first before anything!
+  # before_action :authenticate_user!
 
   protected
 

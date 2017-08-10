@@ -15,10 +15,28 @@
 #   )
 # end
 
+# 5.times do |i|
+#   Post.create(
+#   title: "post#{i}",
+#   content: "hihhi hello hello blah blah blah",
+#   user_id: 6
+#   )
+# end
+
 5.times do |i|
-  Post.create(
-  title: "post#{i}",
-  content: "hihhi hello hello blah blah blah",
-  user_id: 6
+  Comment.create(
+  content: "blah#{i}",
+  upvote: 10,
+  downvote: 0,
+  post_id: 1
+  )
+end
+
+5.times do |i|
+  Comment.create(
+  content: "blah#{i}",
+  upvote: 10,
+  downvote: 0,
+  post_id: 2
   )
 end

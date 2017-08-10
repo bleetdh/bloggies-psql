@@ -7,7 +7,7 @@
     <li>
       <h2><%= post.title %></h2>
       <%= post.content %></br>
-      <small>created by <%= current_user.name %></small>
+      <small>created by <%= post.user.name %></small>
     </li>
 
     <%= link_to "view", post_path(post) %>

@@ -5,7 +5,14 @@ before_action :authenticate_user!,
               except: [:index] # only index can be seen if not logged in
 
   def index
+    news_url = 'https://newsapi.org/v1/articles?source=espn&sortBy=top&apiKey=c29ea55f52bb4f5fb9ab4663c37c9401'
+
+    response = HTTParty.get(news_url)
+
+    # render json: response
+    @news_data = response
     @all_posts = current_user.posts
+    @new_post = current_user.posts.new
   end
 
   def show

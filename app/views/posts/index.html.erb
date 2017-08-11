@@ -12,12 +12,13 @@
 
 <h2>All posts by <%= current_user.name %></h2>
 <ul>
-  <% @all_posts.each_with_index do |post| %>
+  <% @all_posts.each do |post| %>
 
     <li>
       <h2><%= post.title %></h2>
       <%= post.content %></br>
-      <small>created by <%= post.user.name %></small>
+      <small>created by <%= post.user.name %></small></br>
+      <small> post id: <%= post.id %> </small>
     </li>
 
     <%#= link_to "view", post_path(post) %>
